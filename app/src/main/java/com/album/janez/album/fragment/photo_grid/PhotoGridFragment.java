@@ -2,6 +2,7 @@ package com.album.janez.album.fragment.photo_grid;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.album.janez.R;
+import com.album.janez.album.activity.main.ActionBarEventListener;
 import com.album.janez.album.activity.main.AlbumViewModel;
 import com.album.janez.album.dialog.photo_detail.PhotoDetailDialog;
 import com.album.janez.data.model.presentation.Album;
@@ -29,6 +31,18 @@ public class PhotoGridFragment extends Fragment implements OnPhotoClickListener 
 
     private PhotoGridAdapter photoGridAdapter;
     private AlbumViewModel albumViewModel;
+    private ActionBarEventListener listener;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            listener = (ActionBarEventListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " must implement OnHeadlineSelectedListener");
+        }
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,6 +75,18 @@ public class PhotoGridFragment extends Fragment implements OnPhotoClickListener 
         photoListView.setItemAnimator(new DefaultItemAnimator());
         photoListView.addItemDecoration(new DividerItemDecoration(requireContext(), LinearLayout.VERTICAL));
         photoListView.setAdapter(photoGridAdapter);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        listener.showBackButton();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        listener.hideBackButton();
     }
 
     @Override
