@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.album.janez.R;
 import com.album.janez.album.fragment.album_list.AlbumListFragment;
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements ActionBarEventLis
     ViewGroup loaderLayout;
     @BindView(R.id.error_screen_layout)
     ViewGroup errorLayout;
+    @BindView(R.id.tv_error_details)
+    TextView tvErrorDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +60,11 @@ public class MainActivity extends AppCompatActivity implements ActionBarEventLis
                         case LOADING:
                             loaderLayout.setVisibility(View.VISIBLE);
                             errorLayout.setVisibility(View.GONE);
-                            Log.e("dsa", "loading");
                             break;
                         case ERROR:
                             loaderLayout.setVisibility(View.GONE);
                             errorLayout.setVisibility(View.VISIBLE);
+                            tvErrorDetails.setText(response.getErrorMessage());
                             break;
                     }
                 }

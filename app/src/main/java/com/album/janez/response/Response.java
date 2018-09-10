@@ -26,6 +26,10 @@ public class Response<T> {
         return data;
     }
 
+    public String getErrorMessage() {
+        return error.getMessage();
+    }
+
     public State getState() {
         return state;
     }
