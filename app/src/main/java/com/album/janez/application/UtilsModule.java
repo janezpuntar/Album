@@ -1,13 +1,13 @@
 package com.album.janez.application;
 
 import com.album.janez.Constants;
+import com.album.janez.data.datasource.AlbumDataSource;
 import com.album.janez.data.datasource.DataService;
+import com.album.janez.data.datasource.IAlbumDataSource;
 import com.album.janez.data.repository.AlbumRepository;
 import com.album.janez.data.repository.IAlbumRepository;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import java.util.Objects;
 
 import javax.inject.Singleton;
 
@@ -43,8 +43,14 @@ public class UtilsModule {
     }
 
     @Provides
-    IAlbumRepository provideWeatherRepository(DataService service) {
-        return new AlbumRepository(service);
+    @Singleton
+    IAlbumDataSource provideAlbumDataSource(DataService dataService) {
+        return new AlbumDataSource(dataService);
+    }
+
+    @Provides
+    IAlbumRepository provideWeatherRepository(IAlbumDataSource albumDataSource) {
+        return new AlbumRepository(albumDataSource);
     }
 
 }
