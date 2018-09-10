@@ -1,7 +1,5 @@
 package com.album.janez.data.model.presentation;
 
-import com.google.gson.annotations.SerializedName;
-
 public class Photo {
 
     private int albumId;

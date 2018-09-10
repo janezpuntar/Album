@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -63,6 +64,7 @@ public class PhotoGridFragment extends Fragment implements OnPhotoClickListener 
             @Override
             public void onChanged(@Nullable Album album) {
                 if (album != null) {
+                    listener.setTitle(album.getTitle());
                     photoGridAdapter.setPhotos(album.getPhotos());
                 }
             }
@@ -80,9 +82,8 @@ public class PhotoGridFragment extends Fragment implements OnPhotoClickListener 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        photoListView.setLayoutManager(new GridLayoutManager(requireContext(), 2));
+        photoListView.setLayoutManager(new LinearLayoutManager(requireContext()));
         photoListView.setItemAnimator(new DefaultItemAnimator());
-        photoListView.addItemDecoration(new DividerItemDecoration(requireContext(), LinearLayout.VERTICAL));
         photoListView.setAdapter(photoGridAdapter);
     }
 

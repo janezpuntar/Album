@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.album.janez.R;
+import com.album.janez.album.activity.main.ActionBarEventListener;
 import com.album.janez.album.activity.main.AlbumViewModel;
 import com.album.janez.data.model.presentation.Album;
 import com.album.janez.response.Response;
@@ -35,6 +36,18 @@ public class AlbumListFragment extends Fragment implements OnAlbumClickListener 
 
     private AlbumListAdapter albumListAdapter;
     private AlbumViewModel albumViewModel;
+    private ActionBarEventListener listener;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            listener = (ActionBarEventListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " must implement OnHeadlineSelectedListener");
+        }
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,6 +69,12 @@ public class AlbumListFragment extends Fragment implements OnAlbumClickListener 
                 }
             }
         });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        listener.setTitle(getString(R.string.app_name));
     }
 
     @Override

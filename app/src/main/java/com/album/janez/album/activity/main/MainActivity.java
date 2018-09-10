@@ -95,6 +95,13 @@ public class MainActivity extends AppCompatActivity implements ActionBarEventLis
     }
 
     @Override
+    public void setTitle(String title) {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
+        }
+    }
+
+    @Override
     public void showBackButton() {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
