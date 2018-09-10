@@ -8,4 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="DialogText">
+        <item name="android:background">@color/textBackground</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="PhotoDialog" parent="android:Theme.Dialog">
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
 </resources>

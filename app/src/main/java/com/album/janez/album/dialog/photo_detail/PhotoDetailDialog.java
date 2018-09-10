@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.album.janez.R;
 import com.album.janez.album.activity.main.AlbumViewModel;
-import com.album.janez.data.model.presentation.Album;
 import com.album.janez.data.model.presentation.Photo;
 import com.squareup.picasso.Picasso;
 
@@ -28,8 +27,17 @@ public class PhotoDetailDialog extends DialogFragment {
     @BindView(R.id.title)
     TextView title;
 
+    @BindView(R.id.url)
+    TextView url;
+
     @BindView(R.id.image)
     ImageView image;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setStyle(DialogFragment.STYLE_NO_TITLE, R.style.PhotoDialog);
+    }
 
     @Nullable
     @Override
@@ -51,6 +59,7 @@ public class PhotoDetailDialog extends DialogFragment {
                 if (photo != null) {
                     Picasso.get().load(photo.getUrl()).into(image);
                     title.setText(photo.getTitle());
+                    url.setText(photo.getUrl());
                 }
             }
         });
