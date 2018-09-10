@@ -3,6 +3,7 @@ package com.album.janez.application;
 import com.album.janez.data.repository.IAlbumRepository;
 
 import javax.inject.Singleton;
+
 import dagger.Component;
 
 @Singleton

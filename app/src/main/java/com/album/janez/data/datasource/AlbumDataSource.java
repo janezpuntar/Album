@@ -47,7 +47,7 @@ public class AlbumDataSource implements IAlbumDataSource {
             public List<Photo> apply(List<PhotoEntity> photoEntities) throws Exception {
                 List<Photo> photos = new ArrayList<>();
 
-                for (PhotoEntity photoEntity: photoEntities) {
+                for (PhotoEntity photoEntity : photoEntities) {
                     photos.add(new Photo(photoEntity.getAlbumId(), photoEntity.getId(), photoEntity.getTitle(), photoEntity.getUrl(), photoEntity.getThumbnailUrl()));
                 }
 

@@ -14,7 +14,8 @@ public class AlbumItemViewHolder extends RecyclerView.ViewHolder implements View
 
     private OnAlbumClickListener listener;
 
-    @BindView(R.id.title) TextView title;
+    @BindView(R.id.title)
+    TextView title;
 
     public AlbumItemViewHolder(View itemView, OnAlbumClickListener listener) {
         super(itemView);
