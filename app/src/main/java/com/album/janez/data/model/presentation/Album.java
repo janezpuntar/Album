@@ -18,4 +18,12 @@ public class Album {
     public void addPhoto(Photo photo) {
         photos.add(photo);
     }
+
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public String getTitle() {
+        return title;
+    }
 }
