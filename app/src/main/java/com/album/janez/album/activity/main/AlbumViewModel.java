@@ -67,8 +67,8 @@ public class AlbumViewModel extends AndroidViewModel {
         return selectedPhoto;
     }
 
-    public void setSelectedPhoto(MutableLiveData<Photo> selectedPhoto) {
-        this.selectedPhoto = selectedPhoto;
+    public void setSelectedPhoto(Photo selectedPhoto) {
+        this.selectedPhoto.setValue(selectedPhoto);
     }
 
     @Override

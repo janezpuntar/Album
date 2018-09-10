@@ -100,7 +100,7 @@ public class PhotoGridFragment extends Fragment implements OnPhotoClickListener 
 
     @Override
     public void selected(int position) {
-        albumViewModel.getSelectedPhoto().setValue(photoGridAdapter.getPhoto(position));
+        albumViewModel.setSelectedPhoto(photoGridAdapter.getPhoto(position));
 
         PhotoDetailDialog dialog = new PhotoDetailDialog();
         dialog.show(getChildFragmentManager(), PhotoDetailDialog.TAG);
