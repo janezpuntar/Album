@@ -4,9 +4,11 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.transition.Slide;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements ActionBarEventLis
             public void onChanged(@Nullable Album album) {
 
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, new PhotoGridFragment());
+                transaction.replace(R.id.fragment_container, PhotoGridFragment.getInstance());
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
