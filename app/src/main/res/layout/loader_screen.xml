@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/loader_screen_layout"
+    android:layout_below="@+id/toolbar"
     android:visibility="gone"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -22,11 +23,13 @@
         app:layout_constraintTop_toBottomOf="@+id/start_guide_line" />
 
     <TextView
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/loading_albums_please_wait" />
+        android:fontFamily="@font/arbutus"
+        android:layout_marginTop="@dimen/_8dp"
+        android:text="@string/loading_albums_please_wait"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loader" />
 
 </android.support.constraint.ConstraintLayout>

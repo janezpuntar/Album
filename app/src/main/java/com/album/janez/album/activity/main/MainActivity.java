@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,11 +41,16 @@ public class MainActivity extends AppCompatActivity implements ActionBarEventLis
     @BindView(R.id.tv_error_details)
     TextView tvErrorDetails;
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
 
         albumViewModel = ViewModelProviders.of(this).get(AlbumViewModel.class);
         albumViewModel.getData().observe(this, new Observer<Response<List<Album>>>() {

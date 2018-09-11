@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/error_screen_layout"
+    android:layout_below="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:visibility="gone">
@@ -28,6 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_8dp"
+        android:fontFamily="@font/arbutus"
         android:text="@string/something_went_wrong"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -38,6 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_8dp"
+        android:fontFamily="@font/acme"
         android:paddingLeft="@dimen/_8dp"
         android:paddingRight="@dimen/_8dp"
         android:text="@string/something_went_wrong"

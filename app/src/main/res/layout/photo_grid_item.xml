@@ -22,11 +22,12 @@
 
         <TextView
             android:id="@+id/title"
-            android:layout_toRightOf="@id/thumbnail"
-            android:layout_toEndOf="@id/thumbnail"
-            android:padding="@dimen/_4dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/thumbnail"
+            android:layout_toRightOf="@id/thumbnail"
+            android:fontFamily="@font/acme"
+            android:padding="@dimen/_4dp" />
 
     </RelativeLayout>
 

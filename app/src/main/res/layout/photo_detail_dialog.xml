@@ -42,6 +42,8 @@
                 style="@style/DialogText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/arbutus"
+                android:padding="@dimen/_4dp"
                 android:textSize="@dimen/ts_14sp"
                 android:textStyle="bold"
                 tools:text="Title of the picture" />
@@ -51,6 +53,8 @@
                 style="@style/DialogText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/acme"
+                android:padding="@dimen/_4dp"
                 tools:text="http://somepicture.com/picture" />
         </LinearLayout>
 
