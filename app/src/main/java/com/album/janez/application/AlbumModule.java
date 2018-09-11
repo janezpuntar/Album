@@ -2,6 +2,8 @@ package com.album.janez.application;
 
 import android.content.Context;
 
+import com.album.janez.NetworkManager;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -30,5 +32,11 @@ public class AlbumModule {
     @Singleton
     Context provideContext(AlbumApplication app) {
         return app;
+    }
+
+    @Provides
+    @Singleton
+    NetworkManager provideNetworkManager(Context context) {
+        return new NetworkManager(context);
     }
 }

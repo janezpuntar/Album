@@ -32,6 +32,7 @@ public class PhotoItemViewHolder extends RecyclerView.ViewHolder implements View
     public void bind(Photo photo) {
         Picasso.get().load(photo.getThumbnailUrl())
                 .resize(150, 150)
+                .error(R.drawable.no_image)
                 .centerInside().into(thumbnail);
 
         title.setText(photo.getTitle());

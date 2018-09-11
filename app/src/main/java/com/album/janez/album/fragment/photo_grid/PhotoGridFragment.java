@@ -20,6 +20,7 @@ import com.album.janez.R;
 import com.album.janez.album.activity.main.ActionBarEventListener;
 import com.album.janez.album.activity.main.AlbumViewModel;
 import com.album.janez.album.dialog.photo_detail.PhotoDetailDialog;
+import com.album.janez.album.dialog.photo_detail.SelectedPhotoViewModel;
 import com.album.janez.data.model.presentation.Album;
 
 import butterknife.BindView;
@@ -32,6 +33,7 @@ public class PhotoGridFragment extends Fragment implements OnPhotoClickListener 
 
     private PhotoGridAdapter photoGridAdapter;
     private AlbumViewModel albumViewModel;
+    private SelectedPhotoViewModel selectedPhotoViewModel;
     private ActionBarEventListener listener;
 
     public static PhotoGridFragment getInstance() {
@@ -67,6 +69,14 @@ public class PhotoGridFragment extends Fragment implements OnPhotoClickListener 
                 }
             }
         });
+
+        selectedPhotoViewModel = ViewModelProviders.of(requireActivity()).get(SelectedPhotoViewModel.class);
+        selectedPhotoViewModel.getSelectedPhotoPosition().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(@Nullable Integer position) {
+                albumViewModel.setSelectedPhoto(photoGridAdapter.getPhoto(position));
+            }
+        });
     }
 
     @Override
@@ -99,6 +109,7 @@ public class PhotoGridFragment extends Fragment implements OnPhotoClickListener 
 
     @Override
     public void selected(int position) {
+        selectedPhotoViewModel.setSelectedPhotoPosition(position);
         albumViewModel.setSelectedPhoto(photoGridAdapter.getPhoto(position));
 
         PhotoDetailDialog dialog = new PhotoDetailDialog();

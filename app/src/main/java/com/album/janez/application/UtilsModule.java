@@ -1,6 +1,7 @@
 package com.album.janez.application;
 
 import com.album.janez.Constants;
+import com.album.janez.NetworkManager;
 import com.album.janez.data.datasource.AlbumDataSource;
 import com.album.janez.data.datasource.DataService;
 import com.album.janez.data.datasource.IAlbumDataSource;
@@ -49,8 +50,8 @@ public class UtilsModule {
     }
 
     @Provides
-    IAlbumRepository provideWeatherRepository(IAlbumDataSource albumDataSource) {
-        return new AlbumRepository(albumDataSource);
+    IAlbumRepository provideWeatherRepository(IAlbumDataSource albumDataSource, NetworkManager networkManager) {
+        return new AlbumRepository(albumDataSource, networkManager);
     }
 
 }

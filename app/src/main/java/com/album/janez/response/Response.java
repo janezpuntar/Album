@@ -33,8 +33,4 @@ public class Response<T> {
     public State getState() {
         return state;
     }
-
-    public boolean isSuccessful() {
-        return state == State.DATA && data != null;
-    }
 }

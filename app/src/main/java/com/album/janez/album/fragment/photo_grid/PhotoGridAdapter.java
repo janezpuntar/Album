@@ -41,7 +41,7 @@ public class PhotoGridAdapter extends RecyclerView.Adapter<PhotoItemViewHolder> 
     }
 
     public Photo getPhoto(int position) {
-        return photos.get(position);
+        return photos.get(Math.abs(position) % photos.size());
     }
 
     @Override
