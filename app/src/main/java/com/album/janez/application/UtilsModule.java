@@ -6,6 +6,7 @@ import com.album.janez.data.datasource.DataService;
 import com.album.janez.data.datasource.IAlbumDataSource;
 import com.album.janez.data.repository.AlbumRepository;
 import com.album.janez.data.repository.IAlbumRepository;
+import com.album.janez.network.INetworkManager;
 import com.album.janez.network.NetworkManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,7 +51,7 @@ public class UtilsModule {
     }
 
     @Provides
-    IAlbumRepository provideWeatherRepository(IAlbumDataSource albumDataSource, NetworkManager networkManager) {
+    IAlbumRepository provideWeatherRepository(IAlbumDataSource albumDataSource, INetworkManager networkManager) {
         return new AlbumRepository(albumDataSource, networkManager);
     }
 

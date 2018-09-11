@@ -10,7 +10,7 @@ import io.reactivex.Single;
 import io.reactivex.SingleEmitter;
 import io.reactivex.SingleOnSubscribe;
 
-public class NetworkManager {
+public class NetworkManager implements INetworkManager {
 
     private Context context;
 

@@ -3,6 +3,7 @@ package com.album.janez.data.repository;
 import com.album.janez.data.datasource.IAlbumDataSource;
 import com.album.janez.data.model.presentation.Album;
 import com.album.janez.data.model.presentation.Photo;
+import com.album.janez.network.INetworkManager;
 import com.album.janez.network.NetworkManager;
 
 import java.util.ArrayList;
@@ -17,9 +18,9 @@ import io.reactivex.functions.Function;
 public class AlbumRepository implements IAlbumRepository {
 
     private final IAlbumDataSource albumDataSource;
-    private final NetworkManager networkManager;
+    private final INetworkManager networkManager;
 
-    public AlbumRepository(IAlbumDataSource albumDataSource, NetworkManager networkManager) {
+    public AlbumRepository(IAlbumDataSource albumDataSource, INetworkManager networkManager) {
         this.albumDataSource = albumDataSource;
         this.networkManager = networkManager;
     }
