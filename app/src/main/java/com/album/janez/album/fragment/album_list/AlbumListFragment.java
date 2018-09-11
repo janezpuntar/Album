@@ -67,6 +67,13 @@ public class AlbumListFragment extends Fragment implements OnAlbumClickListener 
                 }
             }
         });
+
+        albumViewModel.getSearchQuery().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                albumListAdapter.getFilter().filter(s);
+            }
+        });
     }
 
     @Override
@@ -95,5 +102,6 @@ public class AlbumListFragment extends Fragment implements OnAlbumClickListener 
     @Override
     public void selected(int position) {
         albumViewModel.setSelectedAlbum(albumListAdapter.getAlbum(position));
+        listener.closeSearch();
     }
 }

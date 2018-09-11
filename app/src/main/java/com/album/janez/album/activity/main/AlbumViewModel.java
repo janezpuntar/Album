@@ -23,6 +23,7 @@ public class AlbumViewModel extends AndroidViewModel {
     private MutableLiveData<Response<List<Album>>> data = new MutableLiveData<>();
     private MutableLiveData<Album> selectedAlbum = new MutableLiveData<>();
     private MutableLiveData<Photo> selectedPhoto = new MutableLiveData<>();
+    private MutableLiveData<String> searchQuery = new MutableLiveData<>();
 
     public AlbumViewModel(@NonNull Application application) {
         super(application);
@@ -86,6 +87,14 @@ public class AlbumViewModel extends AndroidViewModel {
 
     public void setSelectedPhoto(Photo selectedPhoto) {
         this.selectedPhoto.setValue(selectedPhoto);
+    }
+
+    public MutableLiveData<String> getSearchQuery() {
+        return searchQuery;
+    }
+
+    public void setSearchQuery(String searchQuery) {
+        this.searchQuery.setValue(searchQuery);
     }
 
     @Override

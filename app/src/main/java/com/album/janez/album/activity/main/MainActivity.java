@@ -1,11 +1,15 @@
 package com.album.janez.album.activity.main;
 
+import android.app.SearchManager;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +30,8 @@ import butterknife.OnClick;
 public class MainActivity extends AppCompatActivity implements ActionBarEventListener {
 
     private AlbumViewModel albumViewModel;
+    private MenuItem search;
+    private SearchView searchView;
 
     @BindView(R.id.loader_screen_layout)
     ViewGroup loaderLayout;
@@ -84,6 +90,30 @@ public class MainActivity extends AppCompatActivity implements ActionBarEventLis
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+
+        search = menu.findItem(R.id.action_search);
+        searchView = (SearchView) search.getActionView();
+        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                albumViewModel.setSearchQuery(newText);
+                return false;
+            }
+        });
+        return true;
+    }
+
     @OnClick(R.id.btn_retry)
     public void retry() {
         albumViewModel.retry();
@@ -118,6 +148,17 @@ public class MainActivity extends AppCompatActivity implements ActionBarEventLis
     public void hideBackButton() {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        }
+    }
+
+    @Override
+    public void closeSearch() {
+        if (search != null) {
+            search.collapseActionView();
+        }
+
+        if (searchView != null) {
+            searchView.setQuery("", true);
         }
     }
 }

@@ -70,6 +70,13 @@ public class PhotoGridFragment extends Fragment implements OnPhotoClickListener 
             }
         });
 
+        albumViewModel.getSearchQuery().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                photoGridAdapter.getFilter().filter(s);
+            }
+        });
+
         selectedPhotoViewModel = ViewModelProviders.of(requireActivity()).get(SelectedPhotoViewModel.class);
         selectedPhotoViewModel.getSelectedPhotoPosition().observe(this, new Observer<Integer>() {
             @Override
@@ -104,6 +111,7 @@ public class PhotoGridFragment extends Fragment implements OnPhotoClickListener 
     @Override
     public void onStop() {
         super.onStop();
+        listener.closeSearch();
         listener.hideBackButton();
     }
 

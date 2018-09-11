@@ -18,4 +18,9 @@ public interface ActionBarEventListener {
      * Hide back button on action bar.
      */
     void hideBackButton();
+
+    /**
+     * Close search menu item and clear query text.
+     */
+    void closeSearch();
 }
