@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.album.janez.R;
@@ -22,6 +23,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements ActionBarEventListener {
 
@@ -82,6 +84,11 @@ public class MainActivity extends AppCompatActivity implements ActionBarEventLis
                 transaction.commit();
             }
         });
+    }
+
+    @OnClick(R.id.btn_retry)
+    public void retry() {
+        albumViewModel.retry();
     }
 
     @Override

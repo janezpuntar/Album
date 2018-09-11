@@ -3,4 +3,5 @@
     <string name="something_went_wrong">Something went wrong!</string>
     <string name="loading_albums_please_wait">Loading albums. Please wait</string>
     <string name="no_internet_connection">No internet connection</string>
+    <string name="retry">Retry</string>
 </resources>

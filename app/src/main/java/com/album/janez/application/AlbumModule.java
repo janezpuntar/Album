@@ -2,7 +2,7 @@ package com.album.janez.application;
 
 import android.content.Context;
 
-import com.album.janez.NetworkManager;
+import com.album.janez.network.NetworkManager;
 
 import javax.inject.Singleton;
 

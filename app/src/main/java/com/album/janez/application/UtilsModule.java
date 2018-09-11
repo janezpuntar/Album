@@ -1,7 +1,7 @@
 package com.album.janez.application;
 
 import com.album.janez.Constants;
-import com.album.janez.NetworkManager;
+import com.album.janez.network.NetworkManager;
 import com.album.janez.data.datasource.AlbumDataSource;
 import com.album.janez.data.datasource.DataService;
 import com.album.janez.data.datasource.IAlbumDataSource;

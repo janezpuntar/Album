@@ -1,6 +1,6 @@
 package com.album.janez.data.repository;
 
-import com.album.janez.NetworkManager;
+import com.album.janez.network.NetworkManager;
 import com.album.janez.data.datasource.IAlbumDataSource;
 import com.album.janez.data.model.presentation.Album;
 import com.album.janez.data.model.presentation.Photo;

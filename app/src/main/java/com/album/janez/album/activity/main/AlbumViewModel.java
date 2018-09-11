@@ -26,6 +26,24 @@ public class AlbumViewModel extends AndroidViewModel {
 
     public AlbumViewModel(@NonNull Application application) {
         super(application);
+        getAlbumData();
+
+    }
+
+    public void retry() {
+        getAlbumData();
+    }
+
+    private void clearLoading() {
+        if (disposable != null && !disposable.isDisposed()) {
+            disposable.dispose();
+            disposable = null;
+        }
+    }
+
+    private void getAlbumData() {
+
+        clearLoading();
 
         AlbumApplication.get(getApplication()).getAlbumComponent()
                 .getAlbumRepository().getAlbums()
@@ -73,10 +91,6 @@ public class AlbumViewModel extends AndroidViewModel {
     @Override
     protected void onCleared() {
         super.onCleared();
-
-        if (disposable != null && !disposable.isDisposed()) {
-            disposable.dispose();
-            disposable = null;
-        }
+        clearLoading();
     }
 }

@@ -46,4 +46,16 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_error"
         tools:text="Message details" />
 
+    <Button
+        android:id="@+id/btn_retry"
+        android:text="@string/retry"
+        android:layout_marginTop="@dimen/_16dp"
+        android:textColor="@color/white"
+        android:background="@drawable/blue_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_error_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </android.support.constraint.ConstraintLayout>

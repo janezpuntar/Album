@@ -1,8 +1,10 @@
-package com.album.janez;
+package com.album.janez.network;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+
+import com.album.janez.R;
 
 import io.reactivex.Single;
 import io.reactivex.SingleEmitter;
@@ -22,12 +24,17 @@ public class NetworkManager {
             @Override
             public void subscribe(SingleEmitter<Boolean> emitter) throws Exception {
                 ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-                NetworkInfo netInfo = cm.getActiveNetworkInfo();
 
-                if (netInfo != null && netInfo.isConnected()) {
-                    emitter.onSuccess(true);
-                } else {
-                    emitter.onError(new Throwable(context.getString(R.string.no_internet_connection)));
+                try {
+                    NetworkInfo netInfo = cm.getActiveNetworkInfo();
+
+                    if (netInfo != null && netInfo.isConnected()) {
+                        emitter.onSuccess(true);
+                    } else {
+                        emitter.onError(new Throwable(context.getString(R.string.no_internet_connection)));
+                    }
+                } catch (NullPointerException e) {
+                    emitter.onError(e);
                 }
             }
         });
